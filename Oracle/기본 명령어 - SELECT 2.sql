@@ -76,3 +76,19 @@ DUAL 테이블은 오라클에서 기본적으로 설치되는 SYSTEM 권한의 1행으로 구성된 테이블
 		FROM DUAL CONNECT BY LEVEL <= n;
 
 SELECT * FROM DUAL; --'x'
+
+DUAL 테이블은 오라클이 기본적으로 제공하는 테이블이지만 프로젝트를 하다 보면 MS SQL, MySQL, 인포믹스 등 오라클이 아닌 다른 DBMS를 사용할 수 있다.
+이때 연산이나 함수 기능 외 간단한 출력값을 보려면 데이터베이스 기능이 아닌 일반 계산기나 프로그램 코드로 결과를 확인할 경우도 있다. 
+만일 다른 DBMS에서도 DUAL 기능을 사용하고자 한다면 다음 명령어로 DUAL 테이블을 만들 수 있다.
+
+CREATE TABLE DUAL
+(
+	DUMMY VARCHAR2(1)
+);
+
+INSERT INTO DUAL VALUES('X');
+COMMIT;
+
+
+
+
