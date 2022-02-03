@@ -48,3 +48,20 @@ FIRST는 첫 번째 조건에 만족하면 해당 테이블에 입력하고 뒤의 조건은 처리하지 않는
 		FROM 테이블
 		WHERE 조건식;
 - 구문 #5는 구문 #4와 같이 테이블을 달리해 입력하지만 원하는 필드만 입력한다.
+
+MERGE 명령은 조건에 따라 지정한 테이블의 데이터를 입력하거나 수정한다. 일반적으로 조건식에 따라 데이터가 있다면 UPDATE 구문을 처리하고, 데이터가 없다면 INSERT 구문을 처리한다.
+기존에 레코드가 존재하는 "WHEN MATCHED THEN" 이후에는 UPDATE 명령으로 레코드를 변경하고, 레코드가 없는 "WHEN NOT MATCHED THEN" 이후에는 INSERT 명령으로 입력한다.
+
+구문 : MERGE INTO 입력/수정할 테이블명
+			USING (테이블명|뷰|서브쿼리)
+			ON 조건식
+			WHEN MATCHED THEN 
+				UPDATE SET 필드명1 = 값1, 필드명2 = 값2, ... , 필드명n = 값n
+			WHEN NOT MATCHED THEN 
+				INSERT ... VALUES 구문;
+
+DELETE 명령은 조건에 만족하는 데이터를 삭제한다. "DELETE FROM 테이블명 WHERE 조건식" 형식이다. 조건식으로 SELECT 명령에 사용하는 모든 구문을 사용할 수 있다.
+
+구문 : DELETE 
+		FROM 테이블명
+		WHERE 조건식;
